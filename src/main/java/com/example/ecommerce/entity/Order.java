@@ -1,4 +1,5 @@
-package entity;
+package com.example.ecommerce.entity;
+
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -29,7 +30,7 @@ public class Order {
     @OneToMany(mappedBy
             = "order", cascade = CascadeType.ALL)
 
-    private List<com.example.ecommerce.entity.OrderItem> items = new ArrayList<>();
+    private List<OrderItem> items = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -37,22 +38,6 @@ public class Order {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public LocalDateTime getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(LocalDateTime orderDate) {
-        this.orderDate = orderDate;
     }
 
     public double getTotalAmount() {
@@ -63,11 +48,38 @@ public class Order {
         this.totalAmount = totalAmount;
     }
 
-    public List<com.example.ecommerce.entity.OrderItem> getItems() {
+    public LocalDateTime getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(LocalDateTime orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public List<OrderItem> getItems() {
         return items;
     }
 
-    public void setItems(List<com.example.ecommerce.entity.OrderItem> items) {
+    public void setItems(List<OrderItem> items) {
         this.items = items;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", userEmail='" + userEmail + '\'' +
+                ", orderDate=" + orderDate +
+                ", totalAmount=" + totalAmount +
+                ", items=" + items +
+                '}';
     }
 }

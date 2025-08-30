@@ -1,4 +1,5 @@
-package entity;
+package com.example.ecommerce.entity;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -7,6 +8,7 @@ import jakarta.persistence.ManyToOne;
 @Entity
 
 public class OrderItem {
+
 
 
     @Id
@@ -18,17 +20,17 @@ public class OrderItem {
 
     @ManyToOne
 
-    private com.example.ecommerce.entity.Order
+    private Order
             order;
 
     @ManyToOne
 
-    private com.example.ecommerce.entity.Product
+    private Product
             product;
 
     private int quantity;
 
-    private String name;
+    private  String name;
 
     private double price;
 
@@ -43,20 +45,20 @@ public class OrderItem {
         this.id = id;
     }
 
-    public com.example.ecommerce.entity.Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(com.example.ecommerce.entity.Order order) {
-        this.order = order;
-    }
-
-    public com.example.ecommerce.entity.Product getProduct() {
+    public Product getProduct() {
         return product;
     }
 
-    public void setProduct(com.example.ecommerce.entity.Product product) {
+    public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     public int getQuantity() {
@@ -89,5 +91,18 @@ public class OrderItem {
 
     public void setImageName(String imageName) {
         this.imageName = imageName;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderItem{" +
+                "id=" + id +
+                ", order=" + order +
+                ", product=" + product +
+                ", quantity=" + quantity +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", imageName='" + imageName + '\'' +
+                '}';
     }
 }
